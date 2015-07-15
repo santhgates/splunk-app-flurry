@@ -1,10 +1,6 @@
 # Splunk-Flurry Connector
 
-> **Currently broken**: Flurry has updated their private API again in a way that breaks this app. Please see <https://github.com/splunk/splunk-app-flurry/issues/5>
-
-> **Seeking new maintainer**: I no longer have the cycles to maintain this app myself, but I will review patches that are submitted against it.
-
-This app provides a scripted input for [Splunk](http://www.splunk.com/) that automatically extracts event logs from [Flurry](http://www.flurry.com/). It is tested on Splunk 4.3.2.
+This app provides a scripted input for [Splunk](http://www.splunk.com/) that automatically extracts event logs from [Flurry](http://www.flurry.com/). It is tested on Splunk Light Free version 6.3.4. Should work with most versions of Splunk Free and Splunk Enterprise.
 
 This input permits the use of Splunk's advanced data analysis capabilities on Flurry data. This is particularly useful if your application logs custom events and you want to perform custom analyses on them.
 
@@ -13,11 +9,13 @@ This input permits the use of Splunk's advanced data analysis capabilities on Fl
 
 * Install the app by copying the `flurry` directory to `$SPLUNK_HOME/etc/apps/flurry`.
 
+* Enter the Flurry credentials and the Project ID in /flurry/default/extract.conf
+
+* Add the year, month and date beginning from which the data is to be extracted from in /flurry/default/extract.conf and save the file.
+
 * (Re)start Splunk so that the app is recognized.
 
-* In the Splunk web interface, from the App menu, select the Flurry app. And press "Continue to app setup page".
-
-* Input your Flurry credentials and the earliest date containing events you wish to download. Enable the Flurry input. Click "Save".
+* In the Splunk web interface, from the menu, select the 'Data Inputs'. And then select 'Scripts'. Enable the extract.py script.
 
 * Wait 15 seconds or so for the new scripted input to extract the first couple of events.
 

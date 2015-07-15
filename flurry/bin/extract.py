@@ -71,6 +71,8 @@ class FlurryConnection(object):
         resp_url = resp.geturl()
         success = (
             resp_url.startswith('https://dev.flurry.com/home.do') or
+			resp_url == 'https://dev.flurry.com/form.do?isFirstPostLogin=true' or
+            resp_url == 'https://dev.flurry.com/home.do?isFirstPostLogin=true' or
             (resp_url.startswith('https://dev.flurry.com/fullPageTakeover.do')
                 and 'home.do' in resp_url))
         if not success:
@@ -192,6 +194,7 @@ class SplunkConfigFile(object):
 output = sys.stdout
 
 log = setup_logger()
+# log.setLevel(logging.INFO)   # for more messages, set to: logging.INFO
 log.setLevel(logging.WARNING)   # for more messages, set to: logging.INFO
 
 # Read session key from splunkd
